@@ -97,6 +97,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "emilioenlaluna-blog:build:production",
+            "firebaseProject": "emilioenlaluna-blog",
+            "firebaseHostingSite": "emilioenlaluna-blog"
+          }
         }
       }
     }

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "emilioenlaluna-blog": {
+      "hosting": {
+        "emilioenlaluna-blog": [
+          "emilioenlaluna-blog"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "emilioenlaluna-blog"
+  }
+}
