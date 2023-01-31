@@ -13,6 +13,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
+import { AuthService } from "./shared/services/auth.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
