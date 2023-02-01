@@ -12,8 +12,17 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 import { AuthService } from "./shared/services/auth.service";
+import { AddBlogComponent } from './add-blog/add-blog.component';
+import { EditBlogComponent } from './edit-blog/edit-blog.component';
+import { BlogListComponent } from './blog-list/blog-list.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,16 +30,24 @@ import { AuthService } from "./shared/services/auth.service";
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    AddBlogComponent,
+    EditBlogComponent,
+    BlogListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService,{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
