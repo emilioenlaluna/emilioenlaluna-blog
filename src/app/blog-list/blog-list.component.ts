@@ -23,7 +23,7 @@ export class BlogListComponent implements OnInit {
   ngOnInit() {
     this.dataState();
     let s = this.crudApi.GetBloggsList();
-    s.snapshotChanges().subscribe((data: any) => {
+    s.snapshotChanges().subscribe((data: any[]) => {
       this.Blogg = [];
       data.forEach((item: any) => {
         let a = item.payload.toJSON();

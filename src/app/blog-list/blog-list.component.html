@@ -9,30 +9,41 @@
         <img src="assets/preloader.gif" class="preloader-icon" alt="No student" />
     </div>
     <div class="no-data text-center" *ngIf="noData">
-        <img src="assets/no-student.svg" class="nodata-msg" alt="No student" />
-        <p class="nodata-msg">No bloggs added yet!</p>
-        <a routerLink="/register-student" class="btn btn-success"> Agregar blog </a>
+        <img src="assets/no-student.svg" class="nodata-msg" alt="No blogg" />
+        <p class="nodata-msg">No hay blogs aún!</p>
+        <a routerLink="/add-blog" class="btn btn-success"> Agregar blog </a>
     </div>
     <div class="table-responsive" *ngIf="hideWhenNoBlogg">
         <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
             <thead>
                 <tr>
-                    <th scope="col">Student Id</th>
-                    <th scope="col">Student name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Mobile number</th>
+                    <th scope="col">Blogg Id</th>
+                    <th scope="col">Blogg Titulo</th>
+                    <th scope="col">Introducción</th>
+                    <th scope="col">Entrada</th>
+                    <th scope="col">Final</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Alt</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Fecha</th>
                     <th class="text-center" scope="col">Edit</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let student of Blogg | paginate: { itemsPerPage: 8, currentPage: p }; let i = index ">
-                    <th scope="row">{{ student.$key }}</th>
-                    <td>{{ student.firstName }} {{ student.lastName }}</td>
-                    <td>{{ student.email }}</td>
-                    <td>{{ student.mobileNumber }}</td>
+                <tr *ngFor="let blog of Blogg | paginate: { itemsPerPage: 8, currentPage: p }; let i = index ">
+                    <th scope="row">{{ blog.$key }}</th>
+                    <td>{{ blog.title }} </td>
+                    <td>{{ blog.intro }}</td>
+                    <td>{{ blog.body }}</td>
+                    <td>{{ blog.final }}</td>
+                    <td>{{ blog.image }}</td>
+                    <td>{{ blog.imagealternative }}</td>
+                    <td>{{ blog.author }}</td>
+                    <td>{{ blog.date }}</td>
                     <td class="text-center action-block">
-                        <a class="mr-2 btn btn-outline-primary btn-sm" routerLink="/edit-student/{{ student.$key }}">Edit</a>
-                        <span class="btn btn-outline-danger btn-sm" (click)="deleteStudent(student)">Delete</span>
+                        <a class="mr-2 btn btn-outline-primary btn-sm"
+                            routerLink="/edit-blog/{{ blog.$key }}">Edit</a>
+                        <span class="btn btn-outline-danger btn-sm" (click)="deleteStudent(blog)">Delete</span>
                     </td>
                 </tr>
             </tbody>

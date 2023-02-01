@@ -28,7 +28,7 @@ export class CrudService {
     });
   }
   // Fetch Single blog Object
-  GetBlogg(id: string) {
+  GetBlogg(id: string|any) {
     this.blogRef = this.db.object('blogs-list/' + id);
     return this.blogRef;
   }
