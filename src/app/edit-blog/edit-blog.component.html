@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label>Entrada</label>
-                                <input type="text" formControlName="body" class="form-control" required />
+                                <quill-editor formControlName="body"></quill-editor>
                                 <!-- errors-->
                                 <p *ngIf="body.touched && body.invalid" class="error">
                                     <sup>*</sup>Ingrese la entrada

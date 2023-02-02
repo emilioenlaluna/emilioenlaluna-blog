@@ -23,6 +23,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { QuillModule } from 'ngx-quill';
+import { DetailComponent } from './detail/detail.component';
+import { HomeComponent } from './home/home.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +37,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     VerifyEmailComponent,
     AddBlogComponent,
     EditBlogComponent,
-    BlogListComponent
+    BlogListComponent,
+    DetailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +52,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    QuillModule.forRoot()
   ],
   providers: [AuthService,{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]

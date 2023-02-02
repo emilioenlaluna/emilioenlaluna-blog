@@ -34,7 +34,8 @@
                     <th scope="row">{{ blog.$key }}</th>
                     <td>{{ blog.title }} </td>
                     <td>{{ blog.intro }}</td>
-                    <td>{{ blog.body }}</td>
+                    <td><div [innerHTML]="blog.body"></div></td>
+                    
                     <td>{{ blog.final }}</td>
                     <td>{{ blog.image }}</td>
                     <td>{{ blog.imagealternative }}</td>
