@@ -11,9 +11,9 @@ import {
 })
 
 export class CrudService {
-  blogsRef: AngularFireList<any> |any;
-  blogRef: AngularFireObject<any>|any;
-  constructor(private db: AngularFireDatabase) { }
+  blogsRef: AngularFireList<any> | any;
+  blogRef: AngularFireObject<any> | any;
+  constructor(private db: AngularFireDatabase, ) { }
   // Create blog
   AddBlogg(blog: Blog) {
     this.blogsRef.push({
@@ -28,10 +28,11 @@ export class CrudService {
     });
   }
   // Fetch Single blog Object
-  GetBlogg(id: string|any) {
+  GetBlogg(id: string | any) {
     this.blogRef = this.db.object('blogs-list/' + id);
     return this.blogRef;
   }
+
   // Fetch blogs List
   GetBloggsList() {
     this.blogsRef = this.db.list('blogs-list');
@@ -55,4 +56,8 @@ export class CrudService {
     this.blogRef = this.db.object('blogs-list/' + id);
     this.blogRef.remove();
   }
+
+  
+  
+  
 }
