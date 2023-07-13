@@ -7,6 +7,9 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { getAuth, updateProfile } from "firebase/auth";
+
 @Injectable({
   providedIn: 'root',
 })
@@ -39,12 +42,21 @@ export class AuthService {
         this.SetUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
           if (user) {
+            if (user.emailVerified) {
+              Swal.fire("Welcome", "You have logged in!", "success");
+
+            } else {
+              Swal.fire("Ups!", "No has verificado tu correo", "error");
+
+            }
+
             this.router.navigate(['dashboard']);
           }
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        //window.alert(error.message);
+        Swal.fire("Ups!", error.message, "error");
       });
   }
   // Sign up with email/password
@@ -55,10 +67,13 @@ export class AuthService {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
         this.SendVerificationMail();
+        Swal.fire("Good job!", "Check your mail to verificate!", "success");
         this.SetUserData(result.user);
+
       })
       .catch((error) => {
-        window.alert(error.message);
+        //window.alert(error.message);
+        Swal.fire("Ups!", error.message, "error");
       });
   }
   // Send email verfificaiton when new user sign up
@@ -71,36 +86,47 @@ export class AuthService {
   }
   // Reset Forggot password
   ForgotPassword(passwordResetEmail: string) {
+    
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
+        //window.alert('Password reset email sent, check your inbox.');
+        Swal.fire("Password reset email sent!", "Check your inbox", "info");
       })
       .catch((error) => {
-        window.alert(error);
+        Swal.fire("Ups!", error.message, "error");
+        //window.alert(error);
       });
   }
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null && user.emailVerified ? true : false;
+    //return user !== null ? true : false;
   }
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+      Swal.fire("Welcome", "You have logged in with google!", "success");
       this.router.navigate(['dashboard']);
-    });
+
+    })
+      .catch((error) => {
+        //window.alert(error);
+        Swal.fire("Ups!", error.message, "error");
+      });
   }
   // Auth logic to run auth providers
   AuthLogin(provider: any) {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['dashboard']);
         this.SetUserData(result.user);
+        this.router.navigate(['dashboard']);
       })
       .catch((error) => {
-        window.alert(error);
+        //window.alert(error);
+        Swal.fire("Ups!", error.message, "error");
       });
   }
   /* Setting up user data when sign in with username/password, 
@@ -124,8 +150,67 @@ export class AuthService {
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {
+      Swal.fire("Bye!", "You have logged out!", "success");
       localStorage.removeItem('user');
       this.router.navigate(['sign-in']);
     });
   }
+
+/*
+ updateProfileData() {
+  return this.afAuth.currentUser
+    .then((u: any) => u.updateProfile())
+    .then(() => {
+      this.router.navigate(['verify-email-address']);
+    });
+}
+
+*/
+
+updateProfileData(displayName: string, photoURL: string) {
+  const user = this.afAuth.currentUser;
+
+  if (user) {
+    return user
+      .then((currentUser) => {
+        if (currentUser) {
+          return updateProfile(currentUser, {
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+            .then(() => {
+              console.log('User profile updated successfully');
+              this.router.navigate(['dashboard']);
+            })
+            .catch((error) => {
+              console.error('Error updating user profile:', error);
+            });
+            
+        }else {
+          return null
+      }
+
+        
+      })
+      .catch((error) => {
+        console.error('Error getting current user:', error);
+      });
+  }
+  return null;
+}
+
+
+SendChangePassword() {
+ 
+  return this.afAuth
+    .sendPasswordResetEmail(this.userData.email)
+    .then(() => {
+      //window.alert('Password reset email sent, check your inbox.');
+      Swal.fire("Password reset email sent!", "Check your inbox", "info");
+    })
+    .catch((error) => {
+      Swal.fire("Ups!", error.message, "error");
+      //window.alert(error);
+    });
+}
 }
