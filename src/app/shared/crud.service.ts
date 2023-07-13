@@ -5,6 +5,7 @@ import {
   AngularFireList,
   AngularFireObject,
 } from '@angular/fire/compat/database';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,10 @@ import {
 export class CrudService {
   blogsRef: AngularFireList<any> | any;
   blogRef: AngularFireObject<any> | any;
+  /*
+  itemsRef: AngularFireList<any> | undefined;
+  items: Observable<any[]> | undefined;
+  */
   constructor(private db: AngularFireDatabase, ) { }
   // Create blog
   AddBlogg(blog: Blog) {
@@ -32,6 +37,14 @@ export class CrudService {
     this.blogRef = this.db.object('blogs-list/' + id);
     return this.blogRef;
   }
+
+  getSingleBLog(id:any){
+    return this.db.list('/blogs-list', ref=> ref.orderByChild("title").equalTo(id)).valueChanges()
+  }
+
+  getOneBlogg(id:any): Observable<any[]> {
+    return  this.db.list('/blogs-list', ref=> ref.orderByChild("title").equalTo(id)).valueChanges()
+    }
 
   // Fetch blogs List
   GetBloggsList() {
