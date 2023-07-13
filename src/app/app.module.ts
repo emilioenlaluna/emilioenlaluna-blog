@@ -15,17 +15,18 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 import { AuthService } from "./shared/services/auth.service";
-import { AddBlogComponent } from './add-blog/add-blog.component';
-import { EditBlogComponent } from './edit-blog/edit-blog.component';
-import { BlogListComponent } from './blog-list/blog-list.component';
+import { AddBlogComponent } from './components/add-blog/add-blog.component';
+import { EditBlogComponent } from './components/edit-blog/edit-blog.component';
+import { BlogListComponent } from './components/blog-list/blog-list.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { QuillModule } from 'ngx-quill';
-import { DetailComponent } from './detail/detail.component';
-import { HomeComponent } from './home/home.component'
+import { DetailComponent } from './components/detail/detail.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { HomeComponent } from './home/home.component'
     EditBlogComponent,
     BlogListComponent,
     DetailComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
