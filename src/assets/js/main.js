@@ -176,6 +176,35 @@
         });
 
     };
+    /*
+   var ssBricksAnimate = function() {
+    var animateEl = $('.animate-this');
+
+    var runAnimations = function() {
+        animateEl.each(function(ctr) {
+            var el = $(this);
+            setTimeout(function() {
+                el.addClass('animated');
+            }, ctr * 200);
+        });
+    };
+
+    $WIN.on('load', function() {
+        setTimeout(function() {
+            runAnimations();
+        }, 300);
+    });
+
+    $WIN.on('resize', function() {
+        // remove animation classes
+        animateEl.removeClass('animated');
+        setTimeout(function() {
+            runAnimations();
+        }, 300);
+    });
+};
+
+    */
 
 
    /* slick slider
