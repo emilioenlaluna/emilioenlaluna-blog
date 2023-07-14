@@ -54,6 +54,32 @@
 
             </article> <!-- end article -->
 
+            <div class="no-data text-center" *ngIf="preLoader">
+                <img src="assets/preloader.gif" class="preloader-icon" alt="No student" />
+            </div>
+            <div class="no-data text-center" *ngIf="noData">
+                <img src="assets/no-student.svg" class="nodata-msg" alt="No blogg" />
+                <p class="nodata-msg">No hay blogs aún!</p>
+                
+            </div>
+            <div class="table-responsive" *ngIf="hideWhenNoBlogg">
+                        <tr *ngFor="let blog of Blogg | paginate: { itemsPerPage: 8, currentPage: p }; let i = index ">
+                            <th scope="row">{{ blog.$key }}</th>
+                            <td>{{ blog.title }} </td>
+                            <td>{{ blog.intro }}</td>
+                            <td><div [innerHTML]="blog.body"></div></td>
+                            
+                            <td>{{ blog.final }}</td>
+                            <td>{{ blog.image }}</td>
+                            <td>{{ blog.imagealternative }}</td>
+                            <td>{{ blog.author }}</td>
+                            <td>{{ blog.date }}</td>
+        
+                        </tr>
+                    
+            </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
             <article class="masonry__brick entry format-standard ">
                     
                 <div class="entry__thumb">

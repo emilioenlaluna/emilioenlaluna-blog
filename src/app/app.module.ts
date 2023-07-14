@@ -26,7 +26,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { QuillModule } from 'ngx-quill';
 import { DetailComponent } from './components/detail/detail.component';
 import { HomeComponent } from './components/home/home.component';
-import { NotFoundComponent } from './components/not-found/not-found.component'
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { AboutComponent } from './components/about/about.component';
+import { CategoryComponent } from './components/category/category.component'
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { NotFoundComponent } from './components/not-found/not-found.component'
     BlogListComponent,
     DetailComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ContactComponent,
+    AboutComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
