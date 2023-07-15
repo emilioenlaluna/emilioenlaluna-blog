@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../shared/crud.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
@@ -17,7 +17,8 @@ export class DetailComponent implements OnInit {
     private crudApi: CrudService,
     private location: Location,
     private actRoute: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -27,8 +28,14 @@ export class DetailComponent implements OnInit {
       .GetBlogg(id)
       .valueChanges()
       .subscribe((data: any) => {
-        this.blogData = data;
+        if (data) {
+          this.blogData = data;
         this.titleService.setTitle('emilioenlaluna blogs'+data.title);
+        } else {
+          // Si no se encuentra ningún dato, redirecciona a la página 404
+          this.router.navigate(['/404']); // Asegúrate de tener la ruta definida para la página 404
+        }
+        
       });
   }
 

@@ -1,7 +1,25 @@
+<!-- site content
+        ================================================== -->
+        <div class="s-content content">
+            <main class="row content__page">
+          
+              <section class="column large-full entry format-standard">
+          
+          
+                <div class="content__page-header">
+                  <h1 class="display-1">
+                    Gestinar blogs
+                  </h1>
+                </div> <!-- end content__page-header -->
+          
+               
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h2 class="h2">Blogs by @emilioenlaluna</h2>
-    <a routerLink="/add-blog" class="btn btn-success" *ngIf="hideWhenNoBlogg">
+    <a routerLink="/add-blog" class="btn btn-success" >
         Agregar blog
+    </a>
+    <a routerLink="/dashboard" class="btn btn-success">
+        Dashboard
     </a>
 </div>
 <div class="pricing-header mx-auto">
@@ -20,7 +38,7 @@
                     <th scope="col">Blogg Id</th>
                     <th scope="col">Blogg Titulo</th>
                     <th scope="col">Introducción</th>
-                    <th scope="col">Entrada</th>
+                    
                     <th scope="col">Final</th>
                     <th scope="col">Imagen</th>
                     <th scope="col">Alt</th>
@@ -35,7 +53,7 @@
                     <th scope="row">{{ blog.$key }}</th>
                     <td>{{ blog.title }} </td>
                     <td>{{ blog.intro }}</td>
-                    <td><div [innerHTML]="blog.body"></div></td>
+                    
                     
                     <td>{{ blog.final }}</td>
                     <td>{{ blog.image }}</td>
@@ -54,3 +72,11 @@
     </div>
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
+          
+               
+              </section>
+          
+            </main>
+          
+          </div> <!-- end s-content -->
+

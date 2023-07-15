@@ -82,6 +82,6 @@ export class EditBlogComponent implements OnInit {
     this.toastr.success(
       this.blogForm.controls['title'].value + ' updated successfully'
     );
-    this.router.navigate(['view-students']);
+    this.router.navigate(['blog-list']);
   }
 }
