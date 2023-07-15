@@ -26,6 +26,7 @@
                     <th scope="col">Alt</th>
                     <th scope="col">Autor</th>
                     <th scope="col">Fecha</th>
+                    <th scope="col">Categoria</th>
                     <th class="text-center" scope="col">Edit</th>
                 </tr>
             </thead>
@@ -41,6 +42,7 @@
                     <td>{{ blog.imagealternative }}</td>
                     <td>{{ blog.author }}</td>
                     <td>{{ blog.date }}</td>
+                    <td>{{ blog.category }}</td>
                     <td class="text-center action-block">
                         <a class="mr-2 btn btn-outline-primary btn-sm"
                             routerLink="/edit-blog/{{ blog.$key }}">Edit</a>

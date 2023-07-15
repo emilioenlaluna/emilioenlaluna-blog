@@ -78,6 +78,14 @@
                     <p *ngIf="date.touched && date.invalid" class="error">
                         <sup>*</sup>Ingrese la Fecha
                     </p>
+                </div> 
+                <div class="col-md-12 mb-3">
+                    <label>Category</label>
+                    <input type="text" formControlName="category" class="form-control" required />
+                    <!-- errors-->
+                    <p *ngIf="category.touched && category.invalid" class="error">
+                        <sup>*</sup>Ingrese el category
+                    </p>
                 </div>  
                 
             </div>

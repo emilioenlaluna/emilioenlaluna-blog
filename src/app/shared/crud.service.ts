@@ -29,7 +29,8 @@ export class CrudService {
       image: blog.image,
       imagealternative: blog.imagealternative,
       author: blog.author,
-      date: blog.date
+      date: blog.date,
+      category: blog.category
     });
   }
   // Fetch Single blog Object
@@ -61,13 +62,22 @@ export class CrudService {
       image: blog.image,
       imagealternative: blog.imagealternative,
       author: blog.author,
-      date: blog.date
+      date: blog.date,
+      category: blog.category
     });
   }
   // Delete blog Object
   DeleteBlogg(id: string) {
     this.blogRef = this.db.object('blogs-list/' + id);
     this.blogRef.remove();
+  }
+
+  GetBlogsByCategory(category: string): Observable<any[]> {
+    return this.db
+      .list('/blogs-list', (ref) =>
+        ref.orderByChild('category').equalTo(category)
+      )
+      .valueChanges();
   }
 
   

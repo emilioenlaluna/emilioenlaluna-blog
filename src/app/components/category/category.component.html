@@ -1,1 +1,144 @@
-<p>category works!</p>
+<div class="s-content">
+
+    <div class="masonry-wrap">
+
+        <div class="masonry">
+
+            <div class="grid-sizer"></div>
+
+            <article class="masonry__brick entry format-standard ">
+
+                <div class="entry__thumb">
+                    <a href="single-standard.html" class="entry__thumb-link">
+                        <img src="/assets/images/thumbs/masonry/woodcraft-600.jpg"
+                            srcset="/assets/images/thumbs/masonry/woodcraft-600.jpg 1x, /assets/images/thumbs/masonry/woodcraft-1200.jpg 2x"
+                            alt="">
+                    </a>
+                </div>
+
+                <div class="entry__text">
+                    <div class="entry__header">
+
+                        <h2 class="entry__title"><a href="#">Welcome to my Blog</a></h2>
+                        <div class="entry__meta">
+                            <span class="entry__meta-cat">
+                                <a href="https://emilioenlaluna.web.app/">@emilioenlaluna</a>
+                                <a href="https://emilioenlaluna-ux.web.app/">Developer & UX Designer</a>
+                            </span>
+                            <span class="entry__meta-date">
+                                <a href="https://emilioenlaluna.web.app/">My Website</a>
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="entry__excerpt">
+                        <p>
+                            Welcome to my personal developer blog, a space where I share my thoughts, experiences, and
+                            insights as a developer. As an avid learner and passionate coder, I am excited to embark on
+                            this journey of sharing my knowledge and connecting with fellow developers from around the
+                            world.
+                        </p>
+                    </div>
+                </div>
+
+            </article> <!-- end article -->
+
+            <article class="masonry__brick entry format-quote ">
+
+                <div class="entry__thumb">
+                    <blockquote>
+                        <p>Software is a great art, and programmers are the artists.</p>
+
+                        <cite>Andy Hertzfeld</cite>
+                    </blockquote>
+                </div>
+
+            </article> <!-- end article -->
+
+            <div *ngIf="preLoader">
+                <div id="loader" class="dots-fade">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div *ngIf="noData">
+                <p>No hay blogs aún!</p>
+            </div>
+            <div *ngIf="hideWhenNoBlogg">
+
+                <article class="masonry__brick entry format-standard"
+                    *ngFor="let blog of Blogg | paginate: { itemsPerPage: 8, currentPage: p }; let i = index ">
+
+                    <div class="entry__thumb">
+                        <a href="blog-detail/{{ blog.$key }}" class="entry__thumb-link">
+                            <img src="{{ blog.image }}"
+                                srcset="/assets/images/thumbs/masonry/walk-600.jpg 1x, /assets/images/thumbs/masonry/walk-1200.jpg 2x"
+                                alt="{{ blog.imagealternative }}">
+                        </a>
+                    </div>
+
+                    <div class="entry__text">
+                        <div class="entry__header">
+                            <h2 class="entry__title"><a href="blog-detail/{{ blog.$key }}">{{ blog.title }}</a></h2>
+                            <div class="entry__meta">
+                                <span class="entry__meta-cat">
+                                    <a href="category.html">{{ blog.category }}</a>
+                                </span>
+                                <span class="entry__meta-date">
+                                    <a href="blog-detail/{{ blog.$key }}">{{ blog.date }}</a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="entry__excerpt">
+                            <p>
+                                {{ blog.intro }}
+                            </p>
+                        </div>
+                    </div>
+
+                </article> <!-- end article -->
+
+                
+
+
+            </div>
+
+
+            <article class="masonry__brick entry format-link ">
+
+                <div class="entry__thumb">
+                    <div class="link-wrap">
+                        <h2>Visit us and get in touch with our services!</h2>
+                        <cite>
+                            <a target="_blank"
+                                href="https://enlaluna-group.web.app/">https://enlaluna-group.web.app/</a>
+                        </cite>
+                    </div>
+                </div>
+
+            </article> <!-- end article -->
+
+            
+
+        </div> <!-- end masonry -->
+
+
+    </div> <!-- end masonry-wrap -->
+
+    <div class="row" *ngIf="!noData">
+        <div class="column large-full">
+
+            <nav class="pgn">
+                
+
+                <ul>
+                   
+                    <pagination-controls  (pageChange)="p = $event"></pagination-controls>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</div> <!-- end s-content -->

@@ -25,6 +25,7 @@ export class AddBlogComponent implements OnInit {
     this.blogForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(10)]],
       intro: ['',[Validators.required]],
+      category: ['',[Validators.required]],
       body: ['',[Validators.required]],
       final: ['',[Validators.required]],
       image: ['',[Validators.required]],
@@ -70,6 +71,9 @@ title: blog.title,
 
   get image() {
     return this.blogForm.get('image');
+  }
+  get category() {
+    return this.blogForm.get('category');
   }
 
   get imagealternative() {

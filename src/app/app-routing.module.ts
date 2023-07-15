@@ -14,20 +14,26 @@ import {AddBlogComponent} from './components/add-blog/add-blog.component'
 import {DetailComponent} from './components/detail/detail.component'
 import {HomeComponent} from './components/home/home.component'
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { CategoryComponent } from './components/category/category.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   { path: '',component:HomeComponent },
   { path: 'blog-detail/:id',component:DetailComponent },
+  { path: 'category/:category', component: CategoryComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'about', component: AboutComponent },
 
-  { path: 'add-blog', component: AddBlogComponent },
-  { path: 'edit-blog/:id', component: EditBlogComponent },
-  { path: 'blog-list',component:BlogListComponent },
+  { path: 'add-blog', component: AddBlogComponent,canActivate: [AuthGuard]},
+  { path: 'edit-blog/:id', component: EditBlogComponent,canActivate: [AuthGuard] },
+  { path: 'blog-list',component:BlogListComponent,canActivate: [AuthGuard] },
 
   { path: 'sign-in', component: SignInComponent },
-  { path: 'register-user', component: SignUpComponent },
+  { path: 'register-user', component: SignUpComponent,canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'verify-email-address', component: VerifyEmailComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent,canActivate: [AuthGuard]},
+  { path: 'verify-email-address', component: VerifyEmailComponent,canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/404' }, 
   { path: '404', component: NotFoundComponent } 
 ];

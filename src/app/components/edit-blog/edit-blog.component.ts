@@ -43,6 +43,9 @@ export class EditBlogComponent implements OnInit {
     return this.blogForm.get('final');
   }
 
+  get category() {
+    return this.blogForm.get('category');
+  }
   get image() {
     return this.blogForm.get('image');
   }
@@ -64,6 +67,7 @@ export class EditBlogComponent implements OnInit {
       intro: ['',[Validators.required]],
       body: ['',[Validators.required]],
       final: ['',[Validators.required]],
+      category: ['',[Validators.required]],
       image: ['',[Validators.required]],
       imagealternative: ['',[Validators.required]],
       author: ['@emilioenlaluna',[Validators.required]],

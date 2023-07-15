@@ -58,7 +58,10 @@ export class HomeComponent  implements OnInit  {
   filterBlogg() {
     if (this.searchTerm) {
       this.filteredBlogg = this.Blogg.filter((blog: Blog) =>
-        blog.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      (blog.title && blog.title.toLowerCase().includes(this.searchTerm.toLowerCase()))||
+      (blog.intro && blog.intro.toLowerCase().includes(this.searchTerm.toLowerCase())) ||
+      (blog.category && blog.category.toLowerCase().includes(this.searchTerm.toLowerCase()))||
+      (blog.body && blog.body.toLowerCase().includes(this.searchTerm.toLowerCase()))
       );
     } else {
       this.filteredBlogg = this.Blogg;
