@@ -1,53 +1,43 @@
-<div class="displayTable">
-    <div class="displayTableCell">
-      <div class="authBlock">
-        <h3>Sign Up</h3>
-        <div class="formGroup">
-          <input
-            type="email"
-            class="formControl"
-            placeholder="Email Address"
-            #userEmail
-            required
-          />
-        </div>
-        <div class="formGroup">
-          <input
-            type="password"
-            class="formControl"
-            placeholder="Password"
-            #userPwd
-            required
-          />
-        </div>
-        <div class="formGroup">
-          <input
-            type="button"
-            class="btn btnPrimary"
-            value="Sign Up"
-            (click)="authService.SignUp(userEmail.value, userPwd.value)"
-          />
-        </div>
-        <div class="formGroup">
-          <span class="or"><span class="orInner">Or</span></span>
-        </div>
-        <!-- Continue with Google -->
-        <div class="formGroup">
-          <button
-            type="button"
-            class="btn googleBtn"
-            (click)="authService.GoogleAuth()"
-          >
-            <i class="fab fa-google-plus-g"></i>
-            Continue with Google
-          </button>
-        </div>
-      </div>
-      <div class="redirectToLogin">
-        <span
-          >Already have an account?
-          <span class="redirect" routerLink="/sign-in">Log In</span></span
-        >
-      </div>
-    </div>
-  </div>
+
+
+  <!-- site content
+        ================================================== -->
+<div class="s-content content">
+  <main class="row content__page">
+
+    <section class="column large-full entry format-standard">
+
+
+      <div class="content__page-header">
+        <h1 class="display-1">
+          Sign Up
+        </h1>
+      </div> <!-- end content__page-header -->
+
+      <h3 class="h2">Give Your Credentials</h3>
+
+      <form name="contactForm" id="contactForm" method="post" action="" autocomplete="off">
+        <fieldset>
+
+          <div class="form-field">
+            <input name="cName" id="cName" class="full-width" placeholder="e-mail" #userEmail value="" type="text" required>
+          </div>
+
+          <div class="form-field">
+            <input name="cEmail" id="cEmail" class="full-width" placeholder="Password" #userPwd value="" type="password" required>
+          </div>
+
+         
+
+          <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large full-width" value="Login" (click)="authService.SignUp(userEmail.value, userPwd.value)"
+            type="submit">
+
+        </fieldset>
+      </form> <!-- end form -->
+      <a href="/sign-in">Already have an account? Log In?</a>
+      
+    </section>
+
+  </main>
+
+</div> <!-- end s-content -->
