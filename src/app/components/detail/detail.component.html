@@ -1,14 +1,60 @@
-<div class="container">
-  <h1>{{ title }}</h1>
-  <p><strong>Introduction:</strong> {{ intro }}</p>
-  <p><strong>Body:</strong> {{ body }}</p>
-  <p><strong>Final:</strong> {{ final }}</p>
-  <p><strong>Image:</strong> {{ image }}</p>
-  <p><strong>Image Alternative:</strong> {{ imagealternative }}</p>
-  <p><strong>Author:</strong> {{ author }}</p>
-  <p><strong>Date:</strong> {{ date }}</p>
+<!-- site content
+        ================================================== -->
+<div class="s-content content">
+  <main class="row content__page">
 
-  
-</div>
+    <article class="column large-full entry format-standard">
 
-<p>lorem fdjfidos jfidsoj</p>
+      <div class="media-wrap entry__media">
+        <div class="entry__post-thumb">
+          <img src="{{ image }}" 
+          srcset="/assets/images/thumbs/single/standard/standard-2000.jpg 2000w, 
+          /assets/images/thumbs/single/standard/standard-1000.jpg 1000w, 
+          /assets/images/thumbs/single/standard/standard-500.jpg 500w" sizes="(max-width: 2000px) 100vw, 2000px"alt="{{ imagealternative }}">
+        </div>
+      </div>
+
+      <div class="content__page-header entry__header">
+        <h1 class="display-1 entry__title">
+          {{ title }}
+        </h1>
+        <ul class="entry__header-meta">
+          <li class="author">By <a href="#0">{{ author }}</a></li>
+          <li class="date">{{ date }}</li>
+          <li class="cat-links">
+            <a href="category/{{category}}">{{category}}</a>
+          </li>
+        </ul>
+      </div> <!-- end entry__header -->
+
+      <div class="entry__content">
+
+        <p class="lead drop-cap">
+          {{ intro }}
+        </p>
+        <br>
+        <div [innerHTML]="body"></div>
+        <br>
+
+        <blockquote>
+          <p>
+            {{ final }}
+          </p>
+          
+        </blockquote>
+
+        
+      </div> <!-- end entry content -->
+
+      
+
+      
+
+    </article> <!-- end column large-full entry-->
+
+
+   
+
+        
+  </main>
+

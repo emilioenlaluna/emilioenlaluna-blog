@@ -63,6 +63,9 @@ export class DetailComponent implements OnInit {
   get date() {
     return this.blogData ? this.blogData.date : '';
   }
+  get category() {
+    return this.blogData ? this.blogData.category : '';
+  }
 
  
 }

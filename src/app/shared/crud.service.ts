@@ -5,7 +5,7 @@ import {
   AngularFireList,
   AngularFireObject,
 } from '@angular/fire/compat/database';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -77,9 +77,16 @@ export class CrudService {
       .list('/blogs-list', (ref) =>
         ref.orderByChild('category').equalTo(category)
       )
-      .valueChanges();
+      .snapshotChanges()
+      .pipe(
+        map((changes: any[]) =>
+          changes.map((c) => ({
+            $key: c.payload.key,
+            ...c.payload.val()
+          }))
+        )
+      );
   }
-
   
   
   

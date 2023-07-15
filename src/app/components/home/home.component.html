@@ -63,7 +63,18 @@
                 </div>
             </div>
             <div *ngIf="noData">
-                <p>No hay blogs aún!</p>
+                <article class="masonry__brick entry format-link ">
+
+                    <div class="entry__thumb">
+                        <div class="link-wrap">
+                            <h2>Ups!</h2>
+                            <cite>
+                                <a href="/">No blogs here!</a>
+                            </cite>
+                        </div>
+                    </div>
+    
+                </article> <!-- end article -->
             </div>
             <div *ngIf="hideWhenNoBlogg">
 
@@ -83,7 +94,7 @@
                             <h2 class="entry__title"><a href="blog-detail/{{ blog.$key }}">{{ blog.title }}</a></h2>
                             <div class="entry__meta">
                                 <span class="entry__meta-cat">
-                                    <a href="category.html">{{ blog.category }}</a>
+                                    <a href="/category/{{ blog.category }}">{{ blog.category }}</a>
                                 </span>
                                 <span class="entry__meta-date">
                                     <a href="blog-detail/{{ blog.$key }}">{{ blog.date }}</a>
