@@ -30,7 +30,7 @@ export class DetailComponent implements OnInit {
       .subscribe((data: any) => {
         if (data) {
           this.blogData = data;
-        this.titleService.setTitle('emilioenlaluna blogs'+data.title);
+        this.titleService.setTitle('emilioenlaluna\'s blog-'+data.title);
         } else {
           // Si no se encuentra ningún dato, redirecciona a la página 404
           this.router.navigate(['/404']); // Asegúrate de tener la ruta definida para la página 404
